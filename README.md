@@ -9,6 +9,8 @@
 1. REACT-ROUTER-DOM
 2. AXIOS
 
+### API USED
 
+[Link]https://jsonplaceholder.typicode.com/
 
 
