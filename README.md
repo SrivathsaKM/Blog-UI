@@ -9,7 +9,7 @@
 1. REACT-ROUTER-DOM
 2. AXIOS
 
-### API USED
+### API TO FETCH DATA
 
 https://jsonplaceholder.typicode.com/
 
