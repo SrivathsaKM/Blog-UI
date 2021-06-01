@@ -1,11 +1,11 @@
-### STEPS 
+# STEPS 
 
 
 ## TO INSTALL PACKAGES 
 
 > $npm install 
 
-# PACKAGES USED: 
+### PACKAGES USED: 
 1. REACT-ROUTER-DOM
 2. AXIOS
 
