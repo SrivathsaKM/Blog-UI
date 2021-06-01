@@ -11,6 +11,6 @@
 
 ### API USED
 
-[Link]https://jsonplaceholder.typicode.com/
+https://jsonplaceholder.typicode.com/
 
 
