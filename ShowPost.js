@@ -8,7 +8,7 @@ const ShowPost = (props) => {
 
   const [userName, setUserName] = useState({});
   const [singlePost, setSinglePost] = useState({});
-  const [singlePostCommands, setSinglePostCommands] = useState([]);
+  const [singlePostCommants, setSinglePostCommants] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const requestOne = axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
@@ -23,7 +23,7 @@ const ShowPost = (props) => {
           const resultOne = response[0].data;
           const resultTwo = response[1].data;
           setSinglePost(resultOne);
-          setSinglePostCommands(resultTwo);
+          setSinglePostCommants(resultTwo);
           setLoading(false);
         })
       )
@@ -89,8 +89,8 @@ const ShowPost = (props) => {
           <hr />
           <h2>COMMENTS</h2>
           <ul>
-            {singlePostCommands.map((commands) => {
-              const { id, body } = commands;
+            {singlePostCommants.map((commants) => {
+              const { id, body } = commants;
               return <li key={id}>{body}</li>;
             })}
           </ul>
