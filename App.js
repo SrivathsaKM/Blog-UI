@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
+import './App.css';
 import Home from './Home';
 import Users from './Users';
 import Posts from './Posts';
@@ -9,22 +10,22 @@ import ShowPost from './ShowPost';
 
 const App = (props) => {
   return (
-    <div style={{ fontFamily: 'Arvo, serif' }}>
-      <ul style={{ display: 'flex', justifyContent: 'center', listStyleType: 'none' }}>
+    <div className='wrapper'>
+      <ul className='ulTag'>
         <li>
-          <Link to='/' style={{ textDecoration: 'none', padding: '0.5em' }}>
+          <Link to='/' className='liTag'>
             Home
           </Link>
         </li>
         |
         <li>
-          <Link to='/users' style={{ textDecoration: 'none', padding: '0.5em' }}>
+          <Link to='/users' className='liTag'>
             Users
           </Link>
         </li>
         |
         <li>
-          <Link to='/posts' style={{ textDecoration: 'none', padding: '0.5em' }}>
+          <Link to='/posts' className='liTag'>
             Posts
           </Link>
         </li>
