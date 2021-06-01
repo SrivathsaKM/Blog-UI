@@ -1,0 +1,14 @@
+.wrapper {
+  font-family: Arvo, serif;
+}
+
+.ulTag {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.liTag {
+  text-decoration: none;
+  padding: 0.5em;
+}
