@@ -11,19 +11,41 @@ const ShowPost = (props) => {
   const [singlePostCommands, setSinglePostCommands] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  //For Single Post
+  const requestOne = axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  //const requestTwo = axios.get(`https://jsonplaceholder.typicode.com/users/${singlePost.userId}`);
+  const requestThree = axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => {
-        const result = response.data;
-        setSinglePost(result);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error.message);
+      .all([requestOne, requestThree])
+      .then(
+        axios.spread((...response) => {
+          const resultOne = response[0].data;
+          const resultTwo = response[1].data;
+          setSinglePost(resultOne);
+          setSinglePostCommands(resultTwo);
+          setLoading(false);
+        })
+      )
+      .catch((errors) => {
+        console.log(errors.message);
+        setLoading(true);
       });
   }, [id]);
+
+  //For Single Post
+  //   useEffect(() => {
+  //     axios
+  //       .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+  //       .then((response) => {
+  //         const result = response.data;
+  //         setSinglePost(result);
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error.message);
+  //       });
+  //   }, [id]);
 
   //For userName (here singlePost array dependency is imp)
   useEffect(() => {
@@ -41,19 +63,19 @@ const ShowPost = (props) => {
     }
   }, [singlePost]);
 
-  //For Comments
-  useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-      .then((response) => {
-        const result = response.data;
-        setSinglePostCommands(result);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, [id]);
+  // For Comments
+  //   useEffect(() => {
+  //     axios
+  //       .get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+  //       .then((response) => {
+  //         const result = response.data;
+  //         setSinglePostCommands(result);
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error.message);
+  //       });
+  //   }, [id]);
 
   return (
     <div>
@@ -72,6 +94,7 @@ const ShowPost = (props) => {
               return <li key={id}>{body}</li>;
             })}
           </ul>
+          <hr />
           <Link to={`/users/${singlePost.userId}`}>More posts of author : {userName.name}</Link>
           <br />
           <br />
